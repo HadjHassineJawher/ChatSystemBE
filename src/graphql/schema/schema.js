@@ -22,8 +22,14 @@ module.exports = buildSchema(`
       password: String!
     }
 
+    type clientauth{
+      token: String!
+      refreshtoken:String!
+    }
+
     type queries {
       ClientList: [Client!]!
+      ClientLogin(email:String!,password:String!):clientauth!
     }
 
     type mutations {
