@@ -14,7 +14,7 @@ mongoose.connect(
   },
   (err) => {
     if (!err) {
-      console.log("ChatSystem DB Connection Succeeded. ");
+      console.log("ChatSystem DataBase Connection Succeeded. ");
     } else {
       console.log("Error in DB connection : " + err);
     }

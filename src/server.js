@@ -9,7 +9,7 @@ require("dotenv").config({ path: "./src/.env" });
 const SERVER_PORT = process.env.SERVER_PORT;
 
 app.use(
-  "/graphiql",
+  "/graphql",
   graphqlHTTP({
     schema: schema,
     rootValue: resolvers,
@@ -17,6 +17,7 @@ app.use(
   })
 );
 
-app.listen(SERVER_PORT, () => {
+app.listen(SERVER_PORT,'192.168.9.23', () => {
   console.log("Server is working Fine Dude .. 💪");
+   console.log("Visit : http://192.168.9.23:4200/graphql ");
 });

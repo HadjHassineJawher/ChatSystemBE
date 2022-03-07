@@ -5,6 +5,10 @@ const {
   generaterefreshToken,
 } = require("../../../helpers/tokens");
 
+/**
+ *  All client List.
+*/
+
 const ClientList = async () => {
   try {
     const clients = await Client.find();
@@ -13,6 +17,23 @@ const ClientList = async () => {
     throw err;
   }
 };
+
+/**
+ * Client by ID.
+ */
+
+const ClientbyID = async ({id}) => {
+  try {
+    const client = await Client.findById(id);
+    return client;
+  } catch (err) {
+    throw err;
+  }
+};
+
+/**
+ * Client LogIn.
+ */
 
 const ClientLogin = async ({ email, password }) => {
   const client = await Client.findOne({ email: email });
@@ -36,4 +57,5 @@ const ClientLogin = async ({ email, password }) => {
 module.exports = {
   ClientList,
   ClientLogin,
+  ClientbyID
 };

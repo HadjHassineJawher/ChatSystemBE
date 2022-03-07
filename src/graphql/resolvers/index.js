@@ -1,14 +1,19 @@
 const clientMutations = require("./clients/mutations");
-const messageMutations = require("./messages/mutations");
+const conversationMutations = require("./chatRoom/mutations");
+const messagesMutations = require("./messages/mutations");
 
 const clientQueries = require("./clients/queries");
+const conversationQueries = require("./chatRoom/queries");
 const messageQueries = require("./messages/queries");
 
 const reslovers = {
-  ...messageMutations,
-  ...clientMutations,
-  ...messageQueries,
+  ...conversationQueries,
   ...clientQueries,
+  ...messageQueries,
+  
+  ...conversationMutations,
+  ...clientMutations,
+  ...messagesMutations,
 };
 
 module.exports = reslovers;
