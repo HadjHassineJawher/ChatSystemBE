@@ -4,6 +4,7 @@ const {
   generateaccessToken,
   generaterefreshToken,
 } = require("../../../helpers/tokens");
+const { GraphQLError } = require("graphql");
 
 /**
  *  All client List.
@@ -33,16 +34,17 @@ const ClientbyID = async ({id}) => {
 
 /**
  * Client LogIn.
- */
+*/
 
 const ClientLogin = async ({ email, password }) => {
   const client = await Client.findOne({ email: email });
   if (!client) {
-    throw new Error("Client does not exist !!");
+    return new GraphQLError("User does not exist !!")
   }
+
   const isEqual = await bcrypt.compare(password, client.password);
   if (!isEqual) {
-    throw new Error("Password is incorrect !!");
+    return new GraphQLError("Password is incorrect !!");
   }
 
   const token = generateaccessToken(client);

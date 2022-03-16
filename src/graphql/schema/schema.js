@@ -58,14 +58,16 @@ module.exports = buildSchema(`
       ClientList: [Client!]!
       ClientLogin(email:String!,password:String!):clientauth!
       ClientbyID (id:String!):Client!
-      MessagesbyChatRoomID(_Id: String!): [Message!]
+      MessagesbyChatRoomID(_Id: String!): [Message!]   
     }
 
     type mutations {
       CreateClient(input: clientInupt): Client!
       UpdateClient(input: clientUpdateInupt):Client!
       CreateChatRoom(_id1: String,_id2: String): ChatRoom!
-      CreateMessage(input: MessageInput ): Message!  
+      CreateMessage(input: MessageInput ): Message!
+      ResetCode(email:String!):String!
+      ResetPassword (code:String!,newPassword:String!):String!
     }
 
     schema {
