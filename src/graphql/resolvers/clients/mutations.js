@@ -58,7 +58,7 @@ const UpdateClient = async(args,req)=>{
 }
 
 /**
-* Password Reset Code.
+* Generating & Saving a Password Reset Code .
 */
   const ResetCode = async ({email}) => {
     try {
@@ -68,7 +68,7 @@ const UpdateClient = async(args,req)=>{
       /**
        * Generating a 6 digit Reset Code.
       */
-      const ResetCode = Math.floor((Math.random() * 1000000) + 1);
+      const ResetCode = Math.floor(100000 + Math.random() * 900000);
       const codeExist = await Codes.findOne({ email: email });
 
       if (!codeExist) {

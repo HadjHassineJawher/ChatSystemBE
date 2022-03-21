@@ -17,7 +17,7 @@ app.use(
   })
 );
 
-app.listen(SERVER_PORT,'192.168.1.15', () => {
+app.listen(SERVER_PORT,'192.168.1.12', () => {
   console.log("Server is working Fine Dude .. 💪");
-   console.log("Visit : http://192.168.1.15:4200/graphql ");
+   console.log("Visit : http://192.168.1.17:4200/graphql ");
 });
