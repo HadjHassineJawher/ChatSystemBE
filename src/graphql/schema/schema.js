@@ -17,6 +17,7 @@ module.exports = buildSchema(`
     type ChatRoom {
       _id :ID!
       members:[String!]
+      messages:[String!]
     }
 
     type Message {
@@ -54,16 +55,32 @@ module.exports = buildSchema(`
       phone: String!
     }
     
+    input chatroomUpdateInupt {
+      id: String!
+      idMessage: String!
+    }
+    input chatroomUpdateUserInupt {
+      id: String!
+      idUser: String!
+    }
+
     type queries {
       ClientList: [Client!]!
       ClientLogin(email:String!,password:String!):clientauth!
       ClientbyID (id:String!):Client!
       MessagesbyChatRoomID(_Id: String!): [Message!]   
+      ChatRoomList:[ChatRoom!]!
+      ChatRoombyID(id: String!):ChatRoom!
     }
-
+    
+    
     type mutations {
+      RegisterClient(username: String, age: String, email: String, phone: String, password: String):Client!
       CreateClient(input: clientInupt): Client!
       UpdateClient(input: clientUpdateInupt):Client!
+      DeleteChatRoomUser(input: chatroomUpdateUserInupt):ChatRoom!
+      DeleteChatRoomMessage(input: chatroomUpdateInupt):ChatRoom!
+      UpdateChatRoomMessage(input: chatroomUpdateInupt):ChatRoom!
       CreateChatRoom(_id1: String,_id2: String): ChatRoom!
       CreateMessage(input: MessageInput ): Message!
       ResetCode(email:String!):String!

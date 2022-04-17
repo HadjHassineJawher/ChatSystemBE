@@ -5,6 +5,32 @@ const { GraphQLError } = require("graphql");
 const { resetCodeMail, resetPasswordMail } = require("../../../middlewares/mailer");
 const Codes = require("../../../database/models/resetCode");
 
+
+/**
+ * Register a New Client.
+*/
+
+const RegisterClient = async (args, req) => {
+  //console.log(args.username)
+  const HashedPassword = await bcrypt.hash(args.password, 15);
+  const client = new Client({
+    username: args.username,
+    age: args.age,
+    email: args.email,
+    phone: args.phone,
+    password: HashedPassword,
+  });
+
+  try {
+    const result = await client.save();
+    createAccountMail(args.email);
+    return result;
+  } catch (err) {
+    throw err;
+  }
+
+};
+
 /**
  * Create a New Client.
 */
@@ -32,6 +58,8 @@ const CreateClient = async (args, req) => {
     return new GraphQLError("Something whent Wrong !!");
   }
 };
+
+
 
 /**
  * Upadate Client details .
@@ -123,4 +151,4 @@ const ResetPassword = async ({code,newPassword}) => {
  
 }
 
-module.exports = {CreateClient,UpdateClient,ResetCode,ResetPassword};
+module.exports = { RegisterClient,CreateClient, UpdateClient,ResetCode,ResetPassword };
