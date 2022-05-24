@@ -5,7 +5,7 @@
   "main": "./src/server",
   "scripts": {
     "start": "nodemon ./src/server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./src/tests/client.spec.js"
   },
   "author": "",
   "license": "ISC",

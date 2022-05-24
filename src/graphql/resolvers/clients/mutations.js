@@ -20,6 +20,7 @@ const CreateClient = async (args, req) => {
     age: args.input.age,
     email: args.input.email,
     phone: args.input.phone,
+    image: args.input.image,
     password: HashedPassword,
   });
 
@@ -44,6 +45,7 @@ const UpdateClient = async(args,req)=>{
     username: args.input.username,
     age: args.input.age,
     email: args.input.email,
+    image: args.input.image,
     phone: args.input.phone,
   };
 

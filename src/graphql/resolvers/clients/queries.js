@@ -51,6 +51,7 @@ const ClientLogin = async ({ email, password }) => {
   const refreshtoken = generaterefreshToken(client);
 
   return {
+    userId:client._id,
     token: token,
     refreshtoken: refreshtoken,
   };

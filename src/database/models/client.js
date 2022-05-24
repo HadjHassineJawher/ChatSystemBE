@@ -12,6 +12,7 @@ const ClientSchema = new Schema(
       match:
         /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
     },
+    image: {type: String,require: true},
     password: { type: String, require: true },
     phone: { type: String, require: true },
     contacts: { type: Array, default: null },

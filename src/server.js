@@ -3,7 +3,6 @@ const { graphqlHTTP } = require("express-graphql");
 const resolvers = require("./graphql/resolvers/index.js");
 const schema = require("./graphql/schema/schema.js");
 const app = express();
-
 require("./database/index");
 require("dotenv").config({ path: "./src/.env" });
 const SERVER_PORT = process.env.SERVER_PORT;
@@ -16,8 +15,13 @@ app.use(
     graphiql: true,
   })
 );
+// http://192.168.34.23:4200/graphql
+// '192.168.1.14'
 
-app.listen(SERVER_PORT,'192.168.1.12', () => {
-  console.log("Server is working Fine Dude .. 💪");
-   console.log("Visit : http://192.168.1.17:4200/graphql ");
+// SERVER_PORT
+const server = app.listen(SERVER_PORT,() => {
+    console.log("Server is working Fine Dude .. 💪");
+    console.log("Visit : http://localhost:4200/graphql");
 });
+
+module.exports = server;
